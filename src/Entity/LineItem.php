@@ -42,6 +42,9 @@ class LineItem implements LineItemInterface
     protected $taxAmount;
 
     /** @var string|null */
+    protected $reference;
+
+    /** @var string|null */
     protected $taxRate;
 
     public function __construct(
@@ -52,7 +55,8 @@ class LineItem implements LineItemInterface
         int $netValue,
         int $grossValue,
         int $taxAmount,
-        ?string $taxRate = null
+        ?string $taxRate = null,
+        ?string $reference = null
     ) {
         $this->name = $name;
         $this->quantity = $quantity;
@@ -62,6 +66,7 @@ class LineItem implements LineItemInterface
         $this->grossValue = $grossValue;
         $this->taxAmount = $taxAmount;
         $this->taxRate = $taxRate;
+        $this->reference = $reference;
     }
 
     public function getId(): ?int
@@ -72,6 +77,11 @@ class LineItem implements LineItemInterface
     public function id(): ?int
     {
         return $this->id;
+    }
+    
+    public function reference()
+    {
+        return $this->reference;
     }
 
     public function name(): string
